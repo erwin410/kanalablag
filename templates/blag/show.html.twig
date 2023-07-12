@@ -1,0 +1,30 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Blag{% endblock %}
+
+{% block body %}
+    <h1>Blag</h1>
+
+    <table class="table">
+        <tbody>
+            <tr>
+                <th>Id</th>
+                <td>{{ blag.id }}</td>
+            </tr>
+            <tr>
+                <th>Title</th>
+                <td>{{ blag.title }}</td>
+            </tr>
+            <tr>
+                <th>Content</th>
+                <td>{{ blag.content }}</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <a href="{{ path('app_blag_index') }}">back to list</a>
+
+    <a href="{{ path('app_blag_edit', {'id': blag.id}) }}">edit</a>
+
+    {{ include('blag/_delete_form.html.twig') }}
+{% endblock %}

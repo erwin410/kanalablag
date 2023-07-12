@@ -1,0 +1,27 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Hello HomeController!{% endblock %}
+
+{% block body %}
+
+    {% include "components/navbar.html.twig" %}
+
+    <h1 class="p-5 fs-1">Bienvenue sur KANALABLAG !</h1>
+
+<div class="p-5">
+    {% for blag in blags %}
+        
+    <div class="card text-white bg-dark mb-3" style="max-width: 20rem;">
+        <div class="card-header">Header</div>
+        <div class="card-body">
+            <h4 class="card-title">{{ blag.title}}</h4>
+            <p class="card-text">{{ blag.category.name }}</p>
+            <p class="card-text">{{ blag.content|slice(0, 100)}}</p>
+            <a class="btn btn-info" href="{{ path('app_blag_show', { id: blag.id })}}">Voir plus...</a>
+        </div>
+    </div>
+
+    {% endfor %}
+</div>
+
+{% endblock %}

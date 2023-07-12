@@ -1,0 +1,42 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Blag index{% endblock %}
+
+{% block body %}
+
+{% include "components/navbar.html.twig" %}
+
+<div class="p-5">
+    <h1>Blag index</h1>
+
+    <table class="table table-hover">
+        <thead>
+            <tr>
+                <th scope="col">Id</th>
+                <th scope="col">Title</th>
+                <th scope="col">Content</th>
+                <th scope="col">actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for blag in blags %}
+            <tr class="table-active">
+                <td>{{ blag.id }}</td>
+                <td>{{ blag.title }}</td>
+                <td>{{ blag.content|slice(0, 100) }}</td>
+                <td>
+                    <a class="btn btn-info" href="{{ path('app_blag_show', {'id': blag.id}) }}">show</a>
+                    <a class="btn btn-warning" href="{{ path('app_blag_edit', {'id': blag.id}) }}">edit</a>
+                </td>
+            </tr>
+        {% else %}
+            <tr>
+                <td colspan="4">no records found</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <a class="btn btn-primary" href="{{ path('app_blag_new') }}">Create new</a>
+</div>
+{% endblock %}
